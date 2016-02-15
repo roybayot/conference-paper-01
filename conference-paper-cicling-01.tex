@@ -16,10 +16,11 @@
 \title{Multilingual author profiling \\using SVMs and linguistic features}
 %\\Information Retrieval for Text Bases
 \titlerunning{}
-\author{Roy Khristopher Bayot\\Teresa Gonçalves, PhD}
+\author{Roy Khristopher Bayot\\Teresa Gonçalves}
 \institute{Universidade de Évora, Department of Informatics,\\
 Rua Romão Ramalho nº59, 7000-671 Évora, Portugal\\
-\mailsa, \mailsb
+\mailsa\\
+\mailsb
 }
 
 \maketitle
@@ -110,24 +111,23 @@ MSE =\frac{1}{n} \sum_{i=1}^n \left( y_{pred}-y_{actual}\right)^2
 
 The objective is to get the maximum accuracy and to get the minimum squared error. 
 \section{Experimental results}
-The following subsections details the results for the different features given each task. The values in boldface are the highest among all the features for each language in a given task. However, it does not convey statistical difference compared to all the other values in the column. 
+The following subsections details the results for the different features given each task. The values in boldface are the highest among within each type. However, it does not convey statistical difference in comparison to other values of the same feature type or even compared to all the other values in the column. Values in the last row may be in boldface as well if the result is better than any of the results from the different features. 
 %\subsection{Experiments}
 %There were four main experiments. The first one uses two different bag of words features separately - normalized term frequency and~\textit{tfidf}. The second one tries two text ngram features separately - text bigrams and text trigrams. The third one uses three POS ngrams features - POS unigrams, POS bigrams, and a combination of POS unigrams and bigrams. Accuracies and mean squared errors were noted and the feature that gave a better result in each type were also noted. These features were then concatenated and used for another classification using the same parameters for the SVM and cross validation as before. 
 \subsection{Age Classification}
-The result for age classification is given in table~\ref{table:AgeResults}.~\textit{Tfidf} features gave an accuracy of 69.1\% for English. It is higher than the normalized term frequency and even the combination of the best features. For Spanish however, the combination of the best features gave the highest accuracy of 72.0\%. The following features were statistically different with each class - 
-bag of words features for English and text ngrams for Spanish. Dutch and Italian dont have results since the data set doesnt have any labels on this aspect. 
+The result for age classification is given in table~\ref{table:AgeResults}.~\textit{Tfidf} and text bigrams gave the better result among bag of words features and text ngrams respectively. For POS ngrams however, bigrams for English gave the best result while the combination of unigrams and bigrams gave a best result for Spanish. Looking at the statistical difference, only the results from bag of words features for English and text ngrams for Spanish were different from each other. Looking at the columns, we can see that~\textit{tfidf} features gave an accuracy of 69.1\% for English. It is higher than the normalized term frequency and even the combination of the best features. For Spanish however, the combination of the best features gave the highest accuracy of 72.0\%. Dutch and Italian dont have results since the data set doesnt have any labels on this aspect. 
 \begin{table}[!htbp]
 \centering
 \begin{tabular}{|c|c|cccc|}
 \hline
 \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch                 & Italian               & Spanish        \\ \hline
 \multirow{2}{*}{BoW}                                                   & tf       & 0.395          &                       &                       & 0.460          \\ %\cline{2-6} 
-                                                                       & tfidf    & \textbf{0.691} &                       &                       & 0.470          \\ \hline
-\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.638          &                       &                       & 0.640          \\ %\cline{2-6} 
+                                                                       & tfidf    & \textbf{0.691} &                       &                       & \textbf{0.470}          \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & \textbf{0.638}          &                       &                       & \textbf{0.640}          \\ %\cline{2-6} 
                                                                        & trigrams & 0.553          &                       &                       & 0.460          \\ \hline
 \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.579          &                       &                       & 0.550          \\ %\cline{2-6} 
-                                                                       & bigrams  & 0.611          &                       &                       & 0.670          \\ %\cline{2-6} 
-                                                                       & uni+bi   & 0.593          &                       &                       & 0.700          \\ \hline
+                                                                       & bigrams  & \textbf{0.611}          &                       &                       & 0.670          \\ %\cline{2-6} 
+                                                                       & uni+bi   & 0.593          &                       &                       & \textbf{0.700}          \\ \hline
 \multicolumn{1}{|l|}{}                                                 & combo    & 0.650          & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \textbf{0.720} \\ \hline
 \end{tabular}
 \caption{Age classification results}
@@ -135,19 +135,19 @@ bag of words features for English and text ngrams for Spanish. Dutch and Italian
 \end{table}
 
 \subsection{Gender Classification}
-The result for gender classification is given in table~\ref{table:GenderResults}.~\textit{Tfidf} features gave the highest accuracy result for English tweets with 68.3\%. However for the other languages, the combination of the features gives the best result - 65.8\% for Dutch, 75.8\% for Italian, and 80.0\% for Spanish. Only Italian has a tie with another feature set - combination of POS unigrams and bigrams. The following features were statistically different with each class - text ngrams for Spanish, and bag of words for English and Spanish.  
+The result for gender classification is given in table~\ref{table:GenderResults}.~\textit{Tfidf} features gave the better results over normalized term frequency. Text trigrams worked better than text bigrams for English and Dutch. On the other hand, text bigrams work better for Italian and Spanish. Finally, the combination of POS unigrams and bigrams worked better for English, Italian, and Spanish, but POS unigrams worked better for Dutch. Looking at the statistical difference, only the results for text ngrams for Spanish, and bag of words for English and Spanish were different. Looking at the columns,~\textit{tfidf} gave the highest accuracy result for English tweets with 68.3\%. However for the other languages, the combination of the features gives the best result - 65.8\% for Dutch, 75.8\% for Italian, and 80.0\% for Spanish. Only Italian has a tie with another feature set - combination of POS unigrams and bigrams.   
 \begin{table}[!htbp]
 \centering
 \begin{tabular}{|c|c|cccc|}
 \hline
 \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch & Italian & Spanish        \\ \hline
 \multirow{2}{*}{BoW}                                                   & tf       & 0.511          & 0.450 & 0.617   & 0.550          \\ %\cline{2-6} 
-                                                                       & tfidf    & \textbf{0.683} & 0.517 & 0.750   & 0.690          \\ \hline
-\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.623          & 0.550 & 0.733   & 0.700          \\ %\cline{2-6} 
-                                                                       & trigrams & 0.652          & 0.650 & 0.700   & 0.520          \\ \hline
-\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.659          & 0.642 & 0.733   & 0.770          \\ %\cline{2-6} 
+                                                                       & tfidf    & \textbf{0.683} & \textbf{0.517} & \textbf{0.750}   & \textbf{0.690}          \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.623          & 0.550 & \textbf{0.733}   & \textbf{0.700}          \\ %\cline{2-6} 
+                                                                       & trigrams & \textbf{0.652}          & \textbf{0.650} & 0.700   & 0.520          \\ \hline
+\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.659          & \textbf{0.642} & 0.733   & 0.770          \\ %\cline{2-6} 
                                                                        & bigrams  & 0.659          & 0.567 & 0.733   & 0.750          \\ %\cline{2-6} 
-                                                                       & uni+bi   & 0.660          & 0.592 & \textbf{0.758}   & 0.780          \\ \hline
+                                                                       & uni+bi   & \textbf{0.660}          & 0.592 & \textbf{0.758}   & \textbf{0.780}          \\ \hline
                                                                        & combo    & 0.671          & \textbf{0.658} & \textbf{0.758}   & \textbf{0.800} \\ \hline
 \end{tabular}
 \caption{Gender classification results}
@@ -155,7 +155,7 @@ The result for gender classification is given in table~\ref{table:GenderResults}
 \end{table}
 
 \subsection{Personality Regression}
-The results for personality regression are given in tables~\ref{table:ExtrovertedResults},~\ref{table:StableResults},~\ref{table:AgreeableResults},~\ref{table:OpenResults}, and~\ref{table:ConscientiousnessResults}. For the extroversion component of the personality, the combination of all the best features gave the best results for Dutch, Italian, and Spanish as seen in table~\ref{table:ExtrovertedResults}. However,~\textit{tfidf} gave the best results for English. Looking into statistical difference among features within a class, only results from Spanish that uses POS unigrams were statistically different from POS bigrams or the combination.
+The results for personality regression are given in tables~\ref{table:ExtrovertedResults},~\ref{table:StableResults},~\ref{table:AgreeableResults},~\ref{table:OpenResults}, and~\ref{table:ConscientiousnessResults}. For the extroversion component of the personality as seen in table~\ref{table:ExtrovertedResults}, we see that~\textit{tfidf} works better than normalized term frequency for all languages. Text bigrams also work better than trigrams. POS bigrams work better for Dutch, Italian, and Spanish. POS unigrams worked better for English. However, looking into statistical difference among features within a class, only results from Spanish that uses POS unigrams were statistically different from POS bigrams or the combination. Looking at the columns, the combination of all the best features gave the best results for Dutch, Italian, and Spanish. However,~\textit{tfidf} gave the best results for English. 
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table}[!htbp]
@@ -164,11 +164,11 @@ The results for personality regression are given in tables~\ref{table:Extroverte
 \hline
 \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch          & Italian        & Spanish        \\ \hline
 \multirow{2}{*}{BoW}                                                   & tf       & 0.027          & 0.024          & 0.030          & 0.029          \\ %\cline{2-6} 
-                                                                       & tfidf    & \textbf{0.023} & 0.016          & 0.019          & 0.025          \\ \hline
-\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.025          & 0.015          & 0.021          & 0.025          \\ %\cline{2-6} 
+                                                                       & tfidf    & \textbf{0.023} & \textbf{0.016}          & \textbf{0.019}          & \textbf{0.025}          \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & \textbf{0.025}          & \textbf{0.015}          & \textbf{0.021}          & \textbf{0.025}          \\ %\cline{2-6} 
                                                                        & trigrams & 0.026          & 0.018          & 0.022          & 0.028          \\ \hline
-\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.040          & 0.020          & 0.030          & 0.129          \\ %\cline{2-6} 
-                                                                       & bigrams  & 0.047          & 0.015          & 0.015          & 0.023          \\ %\cline{2-6} 
+\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & \textbf{0.040}          & 0.020          & 0.030          & 0.129          \\ %\cline{2-6} 
+                                                                       & bigrams  & 0.047          & \textbf{0.015}          & \textbf{0.015}          & \textbf{0.023}          \\ %\cline{2-6} 
                                                                        & uni+bi   & 0.050          & 0.016          & 0.017          & 0.024          \\ \hline
                                                                        & combo    & 0.029          & \textbf{0.014} & \textbf{0.015} & \textbf{0.022} \\ \hline
 \end{tabular}
@@ -188,9 +188,9 @@ Looking into statistical difference among features within a class, results from 
 \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch          & Italian        & Spanish        \\ \hline
 \multirow{2}{*}{BoW}                                                   & tf       & 0.048          & 0.048          & 0.031          & 0.046          \\ %\cline{2-6} 
                                                                        & tfidf    & \textbf{0.039} & 0.028          & 0.030          & 0.034          \\ \hline
-\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.045          & 0.031          & 0.031          & 0.038          \\ %\cline{2-6} 
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & \textbf{0.045}          & \textbf{0.031}          & \textbf{0.031}          & \textbf{0.038}          \\ %\cline{2-6} 
                                                                        & trigrams & 0.048          & 0.041          & 0.033          & 0.041          \\ \hline
-\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.055          & 0.030          & 0.040          & 0.135          \\ %\cline{2-6} 
+\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & \textbf{0.055}          & 0.030          & 0.040          & 0.135          \\ %\cline{2-6} 
                                                                        & bigrams  & 0.057          & 0.027          & \textbf{0.020} & \textbf{0.032} \\ %\cline{2-6} 
                                                                        & uni+bi   & 0.059          & \textbf{0.023} & \textbf{0.020} & 0.033          \\ \hline
                                                                        & combo    & 0.044          & 0.027          & 0.023          & 0.034          \\ \hline
@@ -207,11 +207,11 @@ The results for the agreeability component of personality are given in table~\re
 \hline
 \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch          & Italian        & Spanish        \\ \hline
 \multirow{2}{*}{BoW}                                                   & tf       & 0.025          & 0.025          & 0.026          & 0.028          \\ %\cline{2-6} 
-                                                                       & tfidf    & \textbf{0.023} & \textbf{0.024} & 0.022          & \textbf{0.024} \\ \hline
-\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.027          & 0.030          & 0.026          & 0.027          \\ %\cline{2-6} 
-                                                                       & trigrams & 0.026          & 0.026          & 0.026          & 0.028          \\ \hline
-\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.031          & 0.041          & 0.039          & 0.222          \\ %\cline{2-6} 
-                                                                       & bigrams  & 0.037          & 0.034          & 0.020          & 0.027          \\ %\cline{2-6} 
+                                                                       & tfidf    & \textbf{0.023} & \textbf{0.024} & \textbf{0.022}          & \textbf{0.024} \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.027          & 0.030          & \textbf{0.026}          & \textbf{0.027}          \\ %\cline{2-6} 
+                                                                       & trigrams & \textbf{0.026}          & \textbf{0.026}          & \textbf{0.026}          & 0.028          \\ \hline
+\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & \textbf{0.031}          & 0.041          & 0.039          & 0.222          \\ %\cline{2-6} 
+                                                                       & bigrams  & 0.037          & \textbf{0.034}          & \textbf{0.020}          & \textbf{0.027}          \\ %\cline{2-6} 
                                                                        & uni+bi   & 0.038          & 0.036          & 0.024          & 0.029          \\ \hline
                                                                        & combo    & 0.028          & 0.031          & \textbf{0.019} & \textbf{0.024} \\ \hline
 \end{tabular}
@@ -222,16 +222,17 @@ The results for the agreeability component of personality are given in table~\re
 
 The results for the openness component of personality are given in table~\ref{table:OpenResults}. It again shows varied results.~\textit{Tfidf} features gave the best results for English. The combination of POS unigrams and bigrams also tied with~\textit{tfidf} gave the best results for Dutch. For Italian however, three different feature sets gave the same results - POS bigrams, the combination of POS unigrams and bigrams, and finally, the combination of the best features. Finally for Spanish, POS bigrams gave the best results. Looking into statistical difference among features within a class, bag of words features for Spanish were statistically different. Also, results from Spanish that uses POS unigrams were statistically different from POS bigrams or the combination.
 
+
 \begin{table}[!htbp]
 \centering
 \begin{tabular}{|c|c|cccc|}
 \hline
 \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch          & Italian        & Spanish        \\ \hline
 \multirow{2}{*}{BoW}                                                   & tf       & 0.023          & 0.019          & 0.015          & 0.036          \\ %\cline{2-6} 
-                                                                       & tfidf    & \textbf{0.020} & \textbf{0.012} & 0.014          & 0.026          \\ \hline
-\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.021          & 0.014          & 0.015          & 0.030          \\ %\cline{2-6} 
+                                                                       & tfidf    & \textbf{0.020} & \textbf{0.012} & \textbf{0.014} & \textbf{0.026} \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & \textbf{0.021} & \textbf{0.014} & \textbf{0.015} & \textbf{0.030} \\ %\cline{2-6} 
                                                                        & trigrams & 0.022          & 0.015          & 0.016          & 0.034          \\ \hline
-\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.029          & 0.016          & 0.019          & 0.061          \\ %\cline{2-6} 
+\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & \textbf{0.029} & 0.016          & 0.019          & 0.061          \\ %\cline{2-6} 
                                                                        & bigrams  & 0.035          & 0.013          & \textbf{0.013} & \textbf{0.023} \\ %\cline{2-6} 
                                                                        & uni+bi   & 0.038          & \textbf{0.012} & \textbf{0.013} & 0.024          \\ \hline
                                                                        & combo    & 0.024          & 0.013          & \textbf{0.013} & 0.024          \\ \hline
@@ -240,19 +241,21 @@ The results for the openness component of personality are given in table~\ref{ta
 \label{table:OpenResults}
 \end{table}
 
+
+
 The results for the conscientiousness component of personality are given in table~\ref{table:ConscientiousnessResults}. We again have varied results, POS bigrams and the combination of POS unigrams and bigrams gave the best results for English. The combination of the best features gave the best results for Dutch. POS bigrams gave the results for Italian while~\textit{tfidf} gave the best results for Spanish. Looking into statistical difference among features within a class, results from Spanish that uses POS unigrams were statistically different from POS bigrams.
 
 \begin{table}[!htbp]
 \centering
-\begin{tabular}{|c|c|c|c|c|c|}
+\begin{tabular}{|c|c|cccc|}
 \hline
 \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch          & Italian        & Spanish        \\ \hline
 \multirow{2}{*}{BoW}                                                   & tf       & 0.023          & 0.015          & 0.024          & 0.028          \\ %\cline{2-6} 
-                                                                       & tfidf    & 0.018          & 0.012 & 0.022          & \textbf{0.024} \\ \hline
-\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.019          & 0.012          & 0.022          & 0.026          \\ %\cline{2-6} 
+                                                                       & tfidf    & \textbf{0.018}          & \textbf{0.012} & \textbf{0.022}          & \textbf{0.024} \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & \textbf{0.019}          & \textbf{0.012}          & \textbf{0.022}          & \textbf{0.026}          \\ %\cline{2-6} 
                                                                        & trigrams & 0.020          & 0.015          & 0.023          & 0.028          \\ \hline
 \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.019          & 0.061          & 0.027          & 0.083          \\ %\cline{2-6} 
-                                                                       & bigrams  & \textbf{0.013} & 0.023          & \textbf{0.015} & 0.028          \\ %\cline{2-6} 
+                                                                       & bigrams  & \textbf{0.013} & \textbf{0.023}          & \textbf{0.015} & \textbf{0.028}          \\ %\cline{2-6} 
                                                                        & uni+bi   & \textbf{0.013} & 0.024          & 0.017          & 0.033          \\ \hline
                                                                        & combo    & 0.019          & \textbf{0.010} & 0.016          & 0.025          \\ \hline
 \end{tabular}
