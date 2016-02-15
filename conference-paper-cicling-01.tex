@@ -63,7 +63,7 @@ For this study there were three sets of features that were placed under study - 
 
 There were four main experiments. The first one uses two different bag of words features separately - normalized term frequency and~\textit{tfidf}. The second one tries two text ngram features separately - text bigrams and text trigrams. The third one uses three POS ngrams features - POS unigrams, POS bigrams, and a combination of POS unigrams and bigrams. Accuracies and mean squared errors were noted and the feature that gave a better result in each type were also noted. A comparison between each type was done by using the Wilcoxon signed rank test~\cite{wilcoxon1945individual} to check if the difference between the feature types are significant or not. It was used among the other tests because it allows the comparison between two experiments done on the same data set without making any assumptions on the distributions from which the set is drawn. A confidence interval of 95\% was used.
 
-After noting which features were the best among each category, these features were then concatenated and used for another classification using the same parameters for the SVM and cross validation as before. The following subsections gives the details for preprocessing, the features extracted, and the learning algorithm.
+After noting which features were the best among each category, these features were then concatenated and used for another classification for the final experiment. The following subsections gives the details for preprocessing, the features extracted, and the learning algorithm.
 \subsection{Preprocessing}
 For each language, xml files from each user are read. Then the tweets taken from each user are extracted and concatenated into one line to form one training example. The examples are then transformed by putting them all in lower case. No stop words are removed. Hashtags, numbers, mentions, shares, and retweets were not processed or transformed to anything else. The resulting file is used for feature extraction.  
 
@@ -98,7 +98,7 @@ Part of speech tags were also another set of features that was examined in this 
 
 
 \subsection{Learning algorithm}
-The learning algorithm used was a Support Vector Machines~\cite{cortes1995support} with a linear kernel and the parameter C chosen to be 1, which was the default setting. No parameter tuning was done in these experiments. The rationale for such is because the goal was to determine the effects of the features to the classification and regression.  
+The learning algorithm used was a Support Vector Machines~\cite{cortes1995support} with a linear kernel and the parameter $C$ chosen to be 1, which was the default setting. No parameter tuning was done in these experiments. The rationale for such is because the goal was to determine the effects of the features to the classification and regression.  
 \subsection{Performance metrics}
 Accuracy was the metric used for the age and gender task. On the other hand, mean squared error was used for all problems involving personality. The mean squared error is given in equation~\ref{eqn:mse}.
 
