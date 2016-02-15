@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.12)  15 FEB 2016 21:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.12)  15 FEB 2016 22:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -548,16 +548,24 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Underfull \vbox (badness 1152) has occurred while \output is active []
 
  [3]
-[4] [5] [6] [7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[4] [5] [6]
+Overfull \hbox (2.77689pt too wide) in paragraph at lines 179--180
+[]\OT1/cmr/m/n/10 The re-sults for the sta-bil-ity com-po-nent of per-son-al-it
+y are given in ta-ble 5[]. \OT1/cmr/m/it/10 Tfidf
+ []
 
- [8]
-[9] (./conference-paper-cicling-01.bbl [10]) [11]
+[7]
+Overfull \hbox (5.88797pt too wide) in paragraph at lines 223--224
+[]\OT1/cmr/m/n/10 The re-sults for the open-ness com-po-nent of per-son-al-ity 
+are given in ta-ble 7[]. \OT1/cmr/m/it/10 Tfidf
+ []
+
+[8] [9] (./conference-paper-cicling-01.bbl [10]) [11]
 (./conference-paper-cicling-01.aux) ) 
 Here is how much of TeX's memory you used:
  3105 strings out of 494985
  39428 string characters out of 6180355
- 110598 words of memory out of 5000000
+ 113599 words of memory out of 5000000
  6256 multiletter control sequences out of 15000+600000
  11125 words of font info for 43 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
@@ -576,7 +584,7 @@ onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmtt9.pfb>
-Output written on conference-paper-cicling-01.pdf (11 pages, 202266 bytes).
+Output written on conference-paper-cicling-01.pdf (11 pages, 203449 bytes).
 PDF statistics:
  96 PDF objects out of 1000 (max. 8388607)
  68 compressed objects within 1 object stream
