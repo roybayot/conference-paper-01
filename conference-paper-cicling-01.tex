@@ -110,10 +110,11 @@ MSE =\frac{1}{n} \sum_{i=1}^n \left( y_{pred}-y_{actual}\right)^2
 
 The objective is to get the maximum accuracy and to get the minimum squared error. 
 \section{Experimental results}
+The following subsections details the results for the different features given each task. The values in boldface are the highest among all the features for each language in a given task. However, it does not convey statistical difference compared to all the other values in the column. 
 %\subsection{Experiments}
 %There were four main experiments. The first one uses two different bag of words features separately - normalized term frequency and~\textit{tfidf}. The second one tries two text ngram features separately - text bigrams and text trigrams. The third one uses three POS ngrams features - POS unigrams, POS bigrams, and a combination of POS unigrams and bigrams. Accuracies and mean squared errors were noted and the feature that gave a better result in each type were also noted. These features were then concatenated and used for another classification using the same parameters for the SVM and cross validation as before. 
 \subsection{Age Classification}
-The result for age classification is given in table~\ref{table:AgeResults}. The values in boldface indicate the highest accuracy.~\textit{Tfidf} features gave an accuracy of 69.1\% for English. It is higher than the normalized term frequency and even the combination of the best features. For Spanish however, the combination of the best features gave the highest accuracy of 72.0\%. Dutch and Italian dont have results since the data set doesnt have any labels on this aspect. 
+The result for age classification is given in table~\ref{table:AgeResults}.~\textit{Tfidf} features gave an accuracy of 69.1\% for English. It is higher than the normalized term frequency and even the combination of the best features. For Spanish however, the combination of the best features gave the highest accuracy of 72.0\%. Dutch and Italian dont have results since the data set doesnt have any labels on this aspect. 
 \begin{table}[!htbp]
 \centering
 \begin{tabular}{|c|c|cccc|}
