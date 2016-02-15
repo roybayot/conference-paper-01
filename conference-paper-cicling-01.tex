@@ -114,7 +114,8 @@ The following subsections details the results for the different features given e
 %\subsection{Experiments}
 %There were four main experiments. The first one uses two different bag of words features separately - normalized term frequency and~\textit{tfidf}. The second one tries two text ngram features separately - text bigrams and text trigrams. The third one uses three POS ngrams features - POS unigrams, POS bigrams, and a combination of POS unigrams and bigrams. Accuracies and mean squared errors were noted and the feature that gave a better result in each type were also noted. These features were then concatenated and used for another classification using the same parameters for the SVM and cross validation as before. 
 \subsection{Age Classification}
-The result for age classification is given in table~\ref{table:AgeResults}.~\textit{Tfidf} features gave an accuracy of 69.1\% for English. It is higher than the normalized term frequency and even the combination of the best features. For Spanish however, the combination of the best features gave the highest accuracy of 72.0\%. Dutch and Italian dont have results since the data set doesnt have any labels on this aspect. 
+The result for age classification is given in table~\ref{table:AgeResults}.~\textit{Tfidf} features gave an accuracy of 69.1\% for English. It is higher than the normalized term frequency and even the combination of the best features. For Spanish however, the combination of the best features gave the highest accuracy of 72.0\%. The following features were statistically different with each class - 
+bag of words features for English and text ngrams for Spanish. Dutch and Italian dont have results since the data set doesnt have any labels on this aspect. 
 \begin{table}[!htbp]
 \centering
 \begin{tabular}{|c|c|cccc|}
@@ -134,7 +135,7 @@ The result for age classification is given in table~\ref{table:AgeResults}.~\tex
 \end{table}
 
 \subsection{Gender Classification}
-The result for gender classification is given in table~\ref{table:GenderResults}. The values in boldface indicate the highest accuracy.~\textit{Tfidf} features gave the highest accuracy result for English tweets with 68.3\%. However for the other languages, the combination of the features gives the best result - 65.8\% for Dutch, 75.8\% for Italian, and 80.0\% for Spanish. Only Italian has a tie with another feature set - combination of POS unigrams and bigrams. 
+The result for gender classification is given in table~\ref{table:GenderResults}.~\textit{Tfidf} features gave the highest accuracy result for English tweets with 68.3\%. However for the other languages, the combination of the features gives the best result - 65.8\% for Dutch, 75.8\% for Italian, and 80.0\% for Spanish. Only Italian has a tie with another feature set - combination of POS unigrams and bigrams. The following features were statistically different with each class - text ngrams for Spanish, and bag of words for English and Spanish.  
 \begin{table}[!htbp]
 \centering
 \begin{tabular}{|c|c|cccc|}
@@ -154,7 +155,7 @@ The result for gender classification is given in table~\ref{table:GenderResults}
 \end{table}
 
 \subsection{Personality Regression}
-The results for personality regression are given in tables~\ref{table:ExtrovertedResults},~\ref{table:StableResults},~\ref{table:AgreeableResults},~\ref{table:OpenResults}, and~\ref{table:ConscientiousnessResults}. The values in boldface indicate the lowest mean squared errors. For the extroversion component of the personality, the combination of all the best features gave the best results for Dutch, Italian, and Spanish as seen in table~\ref{table:ExtrovertedResults}. However,~\textit{tfidf} gave the best results for English. 
+The results for personality regression are given in tables~\ref{table:ExtrovertedResults},~\ref{table:StableResults},~\ref{table:AgreeableResults},~\ref{table:OpenResults}, and~\ref{table:ConscientiousnessResults}. For the extroversion component of the personality, the combination of all the best features gave the best results for Dutch, Italian, and Spanish as seen in table~\ref{table:ExtrovertedResults}. However,~\textit{tfidf} gave the best results for English. Looking into statistical difference among features within a class, only results from Spanish that uses POS unigrams were statistically different from POS bigrams or the combination.
 % Please add the following required packages to your document preamble:
 % \usepackage{multirow}
 \begin{table}[!htbp]
@@ -176,6 +177,10 @@ The results for personality regression are given in tables~\ref{table:Extroverte
 \end{table}
 
 The results for the stability component of personality are given in table~\ref{table:StableResults}. The results vary for each language.~\textit{Tfidf} features work well for English with a mean squared error of 0.039. The combination of POS unigrams and bigrams work well for Dutch and Italian. But for Italian, the POS bigrams also work just as well as the combination. Finally for Spanish, POS bigrams gave the best results. 
+
+Looking into statistical difference among features within a class, results from Italian and Spanish that uses POS unigrams were statistically different from POS bigrams or the combination. Results from bag of words features for Spanish were also statistically different from each other. 
+
+
 \begin{table}[!htbp]
 \centering
 \begin{tabular}{|c|c|cccc|}
@@ -194,7 +199,7 @@ The results for the stability component of personality are given in table~\ref{t
 \label{table:StableResults}
 \end{table}
 
-The results for the agreeability component of personality are given in table~\ref{table:AgreeableResults}. For this set,~\textit{tfidf} seems to work for English, Dutch, and Spanish, except that Spanish~\textit{tfidf} results tie with results from the combination of the best features. The combination of the best features also works well for Italian.
+The results for the agreeability component of personality are given in table~\ref{table:AgreeableResults}. For this set,~\textit{tfidf} seems to work for English, Dutch, and Spanish, except that Spanish~\textit{tfidf} results tie with results from the combination of the best features. The combination of the best features also works well for Italian. Looking into statistical difference among features within a class, only results from Spanish that uses POS unigrams were statistically different from POS bigrams or the combination.
 
 \begin{table}[!htbp]
 \centering
@@ -215,7 +220,7 @@ The results for the agreeability component of personality are given in table~\re
 \end{table}
 
 
-The results for the openness component of personality are given in table~\ref{table:OpenResults}. It again shows varied results.~\textit{Tfidf} features gave the best results for English. The combination of POS unigrams and bigrams also tied with~\textit{tfidf} gave the best results for Dutch. For Italian however, three different feature sets gave the same results - POS bigrams, the combination of POS unigrams and bigrams, and finally, the combination of the best features. Finally for Spanish, POS bigrams gave the best results. 
+The results for the openness component of personality are given in table~\ref{table:OpenResults}. It again shows varied results.~\textit{Tfidf} features gave the best results for English. The combination of POS unigrams and bigrams also tied with~\textit{tfidf} gave the best results for Dutch. For Italian however, three different feature sets gave the same results - POS bigrams, the combination of POS unigrams and bigrams, and finally, the combination of the best features. Finally for Spanish, POS bigrams gave the best results. Looking into statistical difference among features within a class, bag of words features for Spanish were statistically different. Also, results from Spanish that uses POS unigrams were statistically different from POS bigrams or the combination.
 
 \begin{table}[!htbp]
 \centering
@@ -235,7 +240,7 @@ The results for the openness component of personality are given in table~\ref{ta
 \label{table:OpenResults}
 \end{table}
 
-The results for the conscientiousness component of personality are given in table~\ref{table:ConscientiousnessResults}. We again have varied results, POS bigrams and the combination of POS unigrams and bigrams gave the best results for English. The combination of the best features gave the best results for Dutch. POS bigrams gave the results for Italian while~\textit{tfidf} gave the best results for Spanish.
+The results for the conscientiousness component of personality are given in table~\ref{table:ConscientiousnessResults}. We again have varied results, POS bigrams and the combination of POS unigrams and bigrams gave the best results for English. The combination of the best features gave the best results for Dutch. POS bigrams gave the results for Italian while~\textit{tfidf} gave the best results for Spanish. Looking into statistical difference among features within a class, results from Spanish that uses POS unigrams were statistically different from POS bigrams.
 
 \begin{table}[!htbp]
 \centering
