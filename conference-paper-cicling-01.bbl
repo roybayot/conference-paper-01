@@ -45,6 +45,11 @@ F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
 \newblock Scikit-learn: Machine learning in {P}ython.
 \newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
 
+\bibitem{rangel2015overview}
+Francisco Rangel, P~Rosso, M~Potthast, B~Stein, and W~Daelemans.
+\newblock Overview of the 3rd author profiling task at pan 2015.
+\newblock In {\em CLEF}, 2015.
+
 \bibitem{rangel2014overview}
 Francisco Rangel, Paolo Rosso, Irina Chugur, Martin Potthast, Martin Trenkmann,
   Benno Stein, Ben Verhoeven, and Walter Daelemans.
@@ -92,5 +97,10 @@ Edson~RD Weren, Viviane~P Moreira, and Jos{\'e}~PM de~Oliveira.
 \newblock Exploring information retrieval features for author
   profiling—notebook for pan at clef 2014.
 \newblock {\em Cappellato et al.[6]}.
+
+\bibitem{wilcoxon1945individual}
+Frank Wilcoxon.
+\newblock Individual comparisons by ranking methods.
+\newblock {\em Biometrics bulletin}, pages 80--83, 1945.
 
 \end{thebibliography}

@@ -3,34 +3,41 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: conference-paper-cicling-01.aux
 The style file: plain.bst
 Database file #1: citations.bib
-Repeated entry---line 136 of file citations.bib
+Repeated entry---line 98 of file citations.bib
+ : @inproceedings{rangel2015overview
+ :                                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 143 of file citations.bib
  : @inproceedings{schmid1994probabilistic
  :                                       ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 183 of file citations.bib
+Repeated entry---line 190 of file citations.bib
  : %@inproceedings{rangel:2015
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 196 of file citations.bib
+Repeated entry---line 203 of file citations.bib
  : %@inproceedings{rangel:2015
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 213 of file citations.bib
+Repeated entry---line 220 of file citations.bib
  : %@proceedings{rangel:2015
  :                          ,
 I'm skipping whatever remains of this entry
-You're missing a field name---line 225 of file citations.bib
- : 
- : %  title={Overview of the 3nd Author Profiling Task at PAN 2015},
-(Error may have been on previous line)
+Repeated entry---line 231 of file citations.bib
+ : %@inproceedings{rangel2015overview
+ :                                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 279 of file citations.bib
+Repeated entry---line 286 of file citations.bib
  : @inproceedings{schler2006effects
  :                                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 326 of file citations.bib
+Repeated entry---line 333 of file citations.bib
  : @inproceedings{schmid1994probabilistic
  :                                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 343 of file citations.bib
+ : @inproceedings{rangel2015overview
+ :                                  ,
 I'm skipping whatever remains of this entry
 Warning--empty journal in lopezusing
 Warning--empty year in lopezusing
@@ -39,45 +46,45 @@ Warning--empty year in maharjansimple
 Warning--empty journal in villenadaedalus
 Warning--empty year in villenadaedalus
 Warning--empty year in weren6exploring
-You've used 16 entries,
+You've used 18 entries,
             2118 wiz_defined-function locations,
-            580 strings with 7468 characters,
-and the built_in function-call counts, 6448 in all, are:
-= -- 576
-> -- 461
-< -- 5
-+ -- 181
-- -- 164
-* -- 507
-:= -- 1113
-add.period$ -- 48
-call.type$ -- 16
-change.case$ -- 128
+            591 strings with 7731 characters,
+and the built_in function-call counts, 7163 in all, are:
+= -- 644
+> -- 496
+< -- 6
++ -- 195
+- -- 176
+* -- 550
+:= -- 1228
+add.period$ -- 54
+call.type$ -- 18
+change.case$ -- 140
 chr.to.int$ -- 0
-cite$ -- 23
-duplicate$ -- 212
-empty$ -- 407
-format.name$ -- 164
-if$ -- 1287
+cite$ -- 25
+duplicate$ -- 244
+empty$ -- 464
+format.name$ -- 176
+if$ -- 1441
 int.to.chr$ -- 0
-int.to.str$ -- 16
-missing$ -- 16
-newline$ -- 80
-num.names$ -- 34
-pop$ -- 154
+int.to.str$ -- 18
+missing$ -- 18
+newline$ -- 90
+num.names$ -- 38
+pop$ -- 170
 preamble$ -- 1
-purify$ -- 112
+purify$ -- 122
 quote$ -- 0
-skip$ -- 142
+skip$ -- 165
 stack$ -- 0
-substring$ -- 250
-swap$ -- 46
-text.length$ -- 5
+substring$ -- 284
+swap$ -- 56
+text.length$ -- 6
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 64
+type$ -- 72
 warning$ -- 7
-while$ -- 48
-width$ -- 18
-write$ -- 163
-(There were 7 error messages)
+while$ -- 55
+width$ -- 20
+write$ -- 184
+(There were 9 error messages)
