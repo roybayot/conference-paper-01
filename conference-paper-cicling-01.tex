@@ -1,10 +1,5 @@
 \documentclass[a4paper]{llncs}
 
-\makeatletter
-\newcommand{\@chapapp}{\relax}%
-\makeatother
-
-\usepackage[title]{appendix}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \setcounter{tocdepth}{3}
@@ -40,7 +35,9 @@ Author profiling has been of importance in the recent years. From a forensic sta
 
 The growth of the internet where text is one of the main forms of communication is one of the reasons for a rising interest in author profiling. Through this growth, various corpora could be extracted, curated, assembled from different sources such as blogs, websites, customer reviews, and even twitter posts. Of course, this presents some problems. For example, people from different countries who use the same online platform such as Twitter or Blogger could behave differently in terms of text usage. This presents a difficulty in profiling. This work tries to take this difficulty into account by studying which kind of features are useful for different languages. 
 
-The aim of this work is to investigate author profiling task using the dataset given in PAN 2015~\cite{rangel:2015} where twitter data from 4 different languages are used to profile an author based on age, gender, and 5 personality traits - agreeability, conscientiousness, extrovertedness, openness, and stability. The four languages are English, Dutch, Italian, and Spanish. There are three different sets of features that are investigated in this work. The first set is the bag of words features in the form of term frequency and term frequency inverse document frequency. The second set are word ngrams. And finally, we also study part of speech ngrams to see if information extracted from these features are useful for characterizing twitter users.
+The aim of this work is to investigate the effect of syntactic information on author profiling in different languages. For this purpose, we used the dataset from PAN 2015~\cite{rangel:2015} since it has 4 different languages and profiled almost in the same way on age, gender, and 5 personality traits - agreeability, conscientiousness, extrovertedness, openness, and stability. The four languages are English, Dutch, Italian, and Spanish. There are three different sets of features that are investigated in this work. The first set is the bag of words features in the form of term frequency and term frequency inverse document frequency. The second set are word ngrams. And finally, we also study part of speech ngrams to see if information extracted from these features are useful for characterizing twitter users.
+
+%author profiling task using the dataset given in PAN 2015~\cite{rangel:2015} where twitter data from 4 different languages are used to profile an author based on age, gender, and 5 personality traits 
 %Author profiling from text has been a topic of interest recently because it permeates through many aspects such as business intelligence. The task has been enabled mostly through the growth of the internet where text is the main form of communication. Various corpora could be extracted, curated, assembled, and texts could come from different sources such as blogs, websites, customer reviews, and even twitter posts.
 %
 %While author anonymity has been present mostly in the web, using profiling can be useful, especially in aspects such as marketing, advertising, as well as security. Profiling mainly uses such text to determine aspects of the author such as age, gender, and certain personality traits. The idea is that topics or word usage are affected by such aspects. For instance, talking about bands or any trending music would be a topic for teenagers. This is not always easy since some people can always think not on their age, and that would affect the writing. Some people can write fiction and it can be that the text was written from the perspective of someone with a different personality type.
@@ -68,7 +65,7 @@ The number of given users varies for each language. There were 152 users for Eng
 
 Processing the data was done through Python using the scikits-learn~\cite{scikit-learn} library. For POS tags, TreeTagger as described in~\cite{schmid1994probabilistic} was used with a python wrapper. 
 
-\section{Methodology}
+\section{Experimental Setup}
 For this study there were three sets of features that were placed under study - bag-of-words features, word ngrams, and  part of speech tags. The same approach was used for all the tasks which was more or less straightforward: feature extraction, then use the features for either classification or regression, and the evaluation was made through a 10 fold cross validation.
 
 There were four main experiments. The first one uses two different bag of words features separately - normalized term frequency and~\textit{tfidf}. The second one tries two text ngram features separately - text bigrams and text trigrams. The third one uses three POS ngrams features - POS unigrams, POS bigrams, and a combination of POS unigrams and bigrams. Accuracies and mean squared errors were noted and the feature that gave a better result in each type were also noted. A comparison between each type was done by using the Wilcoxon signed rank test~\cite{wilcoxon1945individual} to check if the difference between the feature types are significant or not. It was used among the other tests because it allows the comparison between two experiments done on the same data set without making any assumptions on the distributions from which the set is drawn. A confidence interval of 95\% was used.
@@ -275,14 +272,7 @@ From the current work, we can observe that different features work better for di
 
 These results are by no means exhaustive. There are still many methods that could be explored. For instance, the preprocessing is quite minimal. More features could be extracted from the text such as number of links, retweets, hashtags, and mentions, length of tweets, ratios of uppercase to lower case characters, non-dictionary words, lexical diversity, emoticons, sentiment words, informative words and character ngrams. Furthermore, since Support Vector Machines with linear kernel was used, it would also be worth exploring other kernels as well as doing parameter tuning. Finally, a multi-dimensional classification approach can also be explored. Instead of having two distinct classes for age and gender classification for instance, the target classes could be the combination of the two classes. Instead of having 5 different regressions on personality traits, it would be possible to take all 5 traits all at once. This is worth exploring since the traits can be codependent. 
 
-%\appendix
-%\section{Test}
 
-\begin{appendices}
-\renewcommand{\thesection}{\appendixname~\Alph{section}}
-\section{Hello}
-\section{Hello Again}
-\end{appendices}
 
 \bibliographystyle{plain}
 \bibliography{citations}

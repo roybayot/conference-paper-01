@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.12)  16 MAR 2016 18:26
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.11.12)  18 MAR 2016 13:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -128,12 +128,6 @@ LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
 \c@remark=\count115
 \headlineindent=\dimen123
 )
-(/usr/share/texlive/texmf-dist/tex/latex/appendix/appendix.sty
-Package: appendix 2009/09/02 v1.2b extra appendix facilities
-\c@@pps=\count116
-\c@@ppsavesec=\count117
-\c@@ppsaveapp=\count118
-)
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
@@ -165,13 +159,13 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count119
+\inf@bad=\count116
 LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count120
-\leftroot@=\count121
+\uproot@=\count117
+\leftroot@=\count118
 LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count122
-\DOTSCASE@=\count123
+\classnum@=\count119
+\DOTSCASE@=\count120
 LaTeX Info: Redefining \ldots on input line 378.
 LaTeX Info: Redefining \dots on input line 381.
 LaTeX Info: Redefining \cdots on input line 466.
@@ -184,15 +178,15 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 
 Package amsmath Warning: Unable to redefine math accent \vec.
 
-\macc@depth=\count124
-\c@MaxMatrixCols=\count125
+\macc@depth=\count121
+\c@MaxMatrixCols=\count122
 \dotsspace@=\muskip10
-\c@parentequation=\count126
-\dspbrk@lvl=\count127
+\c@parentequation=\count123
+\dspbrk@lvl=\count124
 \tag@help=\toks20
-\row@=\count128
-\column@=\count129
-\maxfields@=\count130
+\row@=\count125
+\column@=\count126
+\maxfields@=\count127
 \andhelp@=\toks21
 \eqnshift@=\dimen127
 \alignsep@=\dimen128
@@ -233,7 +227,7 @@ Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 )
-\Gread@gobject=\count131
+\Gread@gobject=\count128
 ))
 \Gin@req@height=\dimen133
 \Gin@req@width=\dimen134
@@ -465,31 +459,31 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 (./conference-paper-cicling-01.aux)
 \openout1 = `conference-paper-cicling-01.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count132
+\scratchcounter=\count129
 \scratchdimen=\dimen136
 \scratchbox=\box56
-\nofMPsegments=\count133
-\nofMParguments=\count134
+\nofMPsegments=\count130
+\nofMParguments=\count131
 \everyMPshowfont=\toks27
-\MPscratchCnt=\count135
+\MPscratchCnt=\count132
 \MPscratchDim=\dimen137
-\MPnumerator=\count136
-\makeMPintoPDFobject=\count137
+\MPnumerator=\count133
+\makeMPintoPDFobject=\count134
 \everyMPtoPDFconversion=\toks28
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -539,60 +533,61 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Try loading font information for U+msa on input line 32.
+LaTeX Font Info:    Try loading font information for U+msa on input line 27.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 32.
+LaTeX Font Info:    Try loading font information for U+msb on input line 27.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6]
-Overfull \hbox (2.77689pt too wide) in paragraph at lines 188--189
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+Underfull \vbox (badness 1152) has occurred while \output is active []
+
+ [3]
+[4] [5] [6]
+Overfull \hbox (2.77689pt too wide) in paragraph at lines 185--186
 []\OT1/cmr/m/n/10 The re-sults for the sta-bil-ity com-po-nent of per-son-al-it
 y are given in ta-ble 5[]. \OT1/cmr/m/it/10 Tfidf
  []
 
 [7]
-Overfull \hbox (5.88797pt too wide) in paragraph at lines 232--233
+Overfull \hbox (5.88797pt too wide) in paragraph at lines 229--230
 []\OT1/cmr/m/n/10 The re-sults for the open-ness com-po-nent of per-son-al-ity 
 are given in ta-ble 7[]. \OT1/cmr/m/it/10 Tfidf
  []
 
-[8] [9] (./conference-paper-cicling-01.bbl
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [10]
-[11]) [12] (./conference-paper-cicling-01.aux) ) 
+[8] [9] (./conference-paper-cicling-01.bbl [10]) [11]
+(./conference-paper-cicling-01.aux) ) 
 Here is how much of TeX's memory you used:
- 3201 strings out of 494985
- 40819 string characters out of 6180355
- 115008 words of memory out of 5000000
- 6349 multiletter control sequences out of 15000+600000
+ 3105 strings out of 494985
+ 39428 string characters out of 6180355
+ 113599 words of memory out of 5000000
+ 6256 multiletter control sequences out of 15000+600000
  11125 words of font info for 43 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  37i,16n,26p,1766b,304s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmtt9.pfb>
-Output written on conference-paper-cicling-01.pdf (12 pages, 204416 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmbx9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi1
+0.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmtt9.pfb>
+Output written on conference-paper-cicling-01.pdf (11 pages, 203784 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
+ 96 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
