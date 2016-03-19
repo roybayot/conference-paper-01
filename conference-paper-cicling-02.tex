@@ -51,30 +51,34 @@ One of the first few works on author profiling is that of Argamon et al. in~\cit
 
 There has also been some research that uses datasets collected from social media. A particular example is that of Schler et al. in~\cite{schler2006effects} where writing styles in blogs are related to age and gender. Stylistic and content features were extracted from 71,000 different blogs and a Multi-Class Real Winnow was used to learn the models to classify the blogs. Stylistic features included parts-of-speech tags, function words, hyperlinks, and non-dictionary words. Content features included word unigrams with high information gain. The accuracy achieved was around 80\% for gender classification and 75\% for age identification.  
 
-The work or Argamon et al.~\cite{argamon2009automatically} became the basis for the work in PAN. It is an ongoing project from CLEF with author profiling as one of its tasks. It currently has three editions. In the first edition of PAN~\cite{rangel2013overview} in 2013, the task  was age and gender profiling for English and Spanish blogs. There were a variety of methods used. One set includes content-based features such as bag of words, named entities, dictionary words, slang words, contractions, sentiment words, and emotion words. Another would be stylistic features such as frequencies, punctuations, POS, HTML use, readability measures, and other various statistics. There are also features that are n-grams based, IR-based, and collocations-based. Named entities, sentiment words, emotion words, and slang, contractions and words with character flooding were also considered. After extracting the features, the classifiers that were used were the following - decision trees, Support Vector Machines, logistic regression, Naïve Bayes, Maximum Entropy, Stochastic Gradient Descent, and random forests. The work of Lopez-Monroy in~\cite{lopez2013inaoe} was considered the winner for the task although they placed second for both English and Spanish with an accuracy of 38.13\% and 41.58\% respectively. They used second order representation based on relationships between documents and profiles. The work of Meina et al.~\cite{meina2013ensemble} used collocations and placed first for English with a total accuracy of 38.94\%. On the other hand, the work of Santosh et al. in~\cite{santosh2013author} gave a total accuracy of 42.08\% after using POS features for Spanish.
+The work of Argamon et al.~\cite{argamon2009automatically} became the basis for the work in PAN. It is an ongoing project from CLEF with author profiling as one of its tasks. The submission system has quite some interesting features. First, it now has three editions, one for each year. In every edition, a new aspect is being studied. Second, software is submitted to server with an evaluation system. And finally, the evaluation of the software involves a test data that is held out of the initial training data. The test data is only available to the organizers while the training data was distributed so that the software system could be made. 
+
+PAN currently has three editions. In the first edition of PAN~\cite{rangel2013overview} in 2013, the task  was age and gender profiling for English and Spanish blogs. There were a variety of methods used. One set includes content-based features such as bag of words, named entities, dictionary words, slang words, contractions, sentiment words, and emotion words. Another would be stylistic features such as frequencies, punctuations, POS, HTML use, readability measures, and other various statistics. There are also features that are n-grams based, IR-based, and collocations-based. Named entities, sentiment words, emotion words, and slang, contractions and words with character flooding were also considered. After extracting the features, the classifiers that were used were the following - decision trees, Support Vector Machines, logistic regression, Naïve Bayes, Maximum Entropy, Stochastic Gradient Descent, and random forests. The work of Lopez-Monroy in~\cite{lopez2013inaoe} was considered the winner for the task although they placed second for both English and Spanish with an accuracy of 38.13\% and 41.58\% respectively. They used second order representation based on relationships between documents and profiles. The work of Meina et al.~\cite{meina2013ensemble} used collocations and placed first for English with a total accuracy of 38.94\%. On the other hand, the work of Santosh et al. in~\cite{santosh2013author} gave a total accuracy of 42.08\% after using POS features for Spanish.
 
 In PAN 2014~\cite{rangel2014overview}, the task was profiling authors with text from four different sources - social media, twitter, blogs, and hotel reviews. Most of the approaches used in this edition are similar to the previous year. In~\cite{lopezusing}, the method used to represent terms in a space of profiles and then represent the documents in the space of profiles and subprofiles were built using expectation maximization clustering. This is the same method as in the previous year in~\cite{lopez2013inaoe}. In~\cite{maharjansimple}, ngrams were used with stopwords, punctuations, and emoticons retained, and then idf count was also used before placed into a classifier. Liblinear logistic regression returned with the best result. In~\cite{weren6exploring}, different features were used that were related to length (number of characters, words, sentences), information retrieval (cosine similarity, okapi BM25), and readability (Flesch-Kincaid readability, correctness, style). Another approach is to use term vector model representation as in~\cite{villenadaedalus}. For the work of Marquardt et al. in~\cite{marquardt2014age}, they used a combination of content-based features (MRC, LIWC, sentiments) and stylistic features (readability, html tags, spelling and grammatical error, emoticons, total number of posts, number of capitalized letters number of capitalized words). Classifiers also varied for this edition. There was the use of logistic regression, multinomial Naïve Bayes, liblinear, random forests, Support Vector Machines, and decision tables. The method of Lopez-Monroy in~\cite{lopezusing} gave the best result with an average accuracy of 28.95\% on all corpus-types and languages. 
 
-\textbf{PAN 2015 EVAL LAB}
 
 
-\section{Dataset and Tools}
+\section{Experimental Setup}
+As mentioned in the introduction, there were three sets of features that were placed under study - bag-of-words features, word ngrams, and  part of speech tags. The same approach was used for all the tasks which was more or less straightforward: feature extraction, then use the features for either classification or regression. 
+
+%, and the evaluation was made through a 10 fold cross validation.
+
+%There were four main experiments. The first one uses two different bag of words features separately - normalized term frequency and~\textit{tfidf}. The second one tries two text ngram features separately - word bigrams and word trigrams. The third one uses three POS ngrams features - POS unigrams, POS bigrams, and a combination of POS unigrams and bigrams. Accuracies and mean squared errors were noted and the feature that gave a better result in each type were also noted. 
+
+After choosing the best features for each feature type, we did a fourth experiment combining all of the best features. These features were then concatenated and used for another classification for the final experiment. The following subsections gives the details for the dataset, preprocessing, the features extracted, the learning algorithm, and the evaluation procedure. 
+
+\subsection{Dataset}
 The data set was taken from PAN 2015 Author Profiling task~\cite{rangel2015overview}. It is composed of a set of tweets for 4 different languages - English, Dutch, Italian, and Spanish. It was decided to build a different model for each profiling element: age, gender, and the 5 different personality traits - extroverted, stable, agreeable, open, conscientious. There were 4 categories for the age classification - 18-24, 25-34, 35-49, and 50 and above but for Dutch and Italian, age classification is not possible because there was no data given. For personality traits, the values range from -0.5 to 0.5.
 
 The number of given users varies for each language. There were 152 users for English, 34 for Dutch, 38 for Italian, and 100 for Spanish. Each user has different number of tweets. The dataset is balanced based on gender. 
 
-Processing the data was done through Python using the scikits-learn~\cite{scikit-learn} library. For POS tags, TreeTagger as described in~\cite{schmid1994probabilistic} was used with a python wrapper. 
 
-\section{Experimental Setup}
-For this study there were three sets of features that were placed under study - bag-of-words features, word ngrams, and  part of speech tags. The same approach was used for all the tasks which was more or less straightforward: feature extraction, then use the features for either classification or regression, and the evaluation was made through a 10 fold cross validation.
-
-There were four main experiments. The first one uses two different bag of words features separately - normalized term frequency and~\textit{tfidf}. The second one tries two text ngram features separately - text bigrams and text trigrams. The third one uses three POS ngrams features - POS unigrams, POS bigrams, and a combination of POS unigrams and bigrams. Accuracies and mean squared errors were noted and the feature that gave a better result in each type were also noted. A comparison between each type was done by using the Wilcoxon signed rank test~\cite{wilcoxon1945individual} to check if the difference between the feature types are significant or not. It was used among the other tests because it allows the comparison between two experiments done on the same data set without making any assumptions on the distributions from which the set is drawn. A confidence interval of 95\% was used.
-
-After noting which features were the best among each category, these features were then concatenated and used for another classification for the final experiment. The following subsections gives the details for preprocessing, the features extracted, and the learning algorithm.
 \subsection{Preprocessing}
-For each language, xml files from each user are read. Then the tweets taken from each user are extracted and concatenated into one line to form one training example. The examples are then transformed by putting them all in lower case. No stop words are removed. Hashtags, numbers, mentions, shares, and retweets were not processed or transformed to anything else. The resulting file is used for feature extraction.  
+Processing the data was done through Python using the scikits-learn~\cite{scikit-learn} library. For each language, xml files from each user are read. Then the tweets taken from each user are extracted and concatenated into one line to form one training example. The examples are then transformed by putting them all in lower case. No stop words are removed. Hashtags, numbers, mentions, shares, and retweets were not processed or transformed to anything else. The resulting file is used for feature extraction.  
 
-\subsection{Feature Extraction}
+%For POS tags, TreeTagger as described in~\cite{schmid1994probabilistic} was used with a python wrapper.
+\subsection{Features}
 The following set of features were extracted after preprocessing and the number of features extracted from each set is given in the table~\ref{table:numFeatures}: 
 
 \begin{table}[!htbp]
@@ -84,8 +88,8 @@ The following set of features were extracted after preprocessing and the number 
     Feature       & English & Dutch & Italian & Spanish \\ \hline
     tf            & 26264   & 8569  & 12590   & 24688   \\ %\hline
     tfidf         & 26264   & 8569  & 12590   & 24688   \\ %\hline
-    Text bigrams  & 104435  & 29648 & 36002   & 87313   \\ %\hline
-    Text trigrams & 147577  & 39286 & 44051   & 122130  \\ %\hline
+    Word bigrams  & 104435  & 29648 & 36002   & 87313   \\ %\hline
+    Word trigrams & 147577  & 39286 & 44051   & 122130  \\ %\hline
     POS unigrams  & 35      & 39    & 38      & 68      \\ %\hline
     POS bigrams   & 895     & 792   & 443     & 1999    \\ \hline
   \end{tabular}
@@ -103,10 +107,11 @@ Word ngrams were the second set of features that was examined. Counts of bigrams
 \subsubsection{POS Ngrams}
 Part of speech tags were also another set of features that was examined in this study. It was extracted by using a python wrapper to Schmid's TreeTagger program as detailed in~\cite{schmid1994probabilistic}. Counts for unigrams, bigrams, and the combination of the two were used as features. The English parameter file for TreeTagger has 36 different tags. Italian has 38 tags. Dutch has 41 and Spanish has 75. No terms were discarded.
 
-
-\subsection{Learning algorithm}
+\subsection{Learning Algorithm}
 The learning algorithm used was a Support Vector Machines~\cite{cortes1995support} with a linear kernel and the parameter $C$ chosen to be 1, which was the default setting. No parameter tuning was done in these experiments. The rationale for such is because the goal was to determine the effects of the features to the classification and regression.  
-\subsection{Performance metrics}
+
+\subsection{Evaluation Procedure}
+\subsubsection{Performance metrics}
 Accuracy was the metric used for the age and gender task. On the other hand, mean squared error was used for all problems involving personality. The mean squared error is given in equation~\ref{eqn:mse}.
 
 \begin{equation}
@@ -116,159 +121,171 @@ Accuracy was the metric used for the age and gender task. On the other hand, mea
 
 
 The objective is to get the maximum accuracy and to get the minimum squared error. 
+
+\subsubsection{Cross validation and Statistical Test}
+The hold out test data is available only to PAN and as such, we used ten fold cross validation for each experiment. After performing cross validation, a comparison between each type was done by using the Wilcoxon signed rank test~\cite{wilcoxon1945individual} to check if the difference between the feature types are significant or not. It was used among the other statistical tests because it allows the comparison between two experiments done on the same data set without making any assumptions on the distributions from which the set is drawn. A confidence interval of 95\% was used.
+
+
 \section{Experimental results}
-The following subsections details the results for the different features given each task. The values in boldface are the highest among within each type. However, it does not convey statistical difference in comparison to other values of the same feature type or even compared to all the other values in the column. Values in the last row may be in boldface as well if the result is better than any of the results from the different features. 
-%\subsection{Experiments}
-%There were four main experiments. The first one uses two different bag of words features separately - normalized term frequency and~\textit{tfidf}. The second one tries two text ngram features separately - text bigrams and text trigrams. The third one uses three POS ngrams features - POS unigrams, POS bigrams, and a combination of POS unigrams and bigrams. Accuracies and mean squared errors were noted and the feature that gave a better result in each type were also noted. These features were then concatenated and used for another classification using the same parameters for the SVM and cross validation as before. 
+The following subsections details the results for the different features given each task. The values in boldface indicate the results are statistically different as compared to the other. 
+
 \subsection{Age Classification}
-The result for age classification is given in table~\ref{table:AgeResults}.~\textit{Tfidf} and text bigrams gave the better result among bag of words features and word ngrams respectively. For POS ngrams however, bigrams for English gave the best result while the combination of unigrams and bigrams gave a best result for Spanish. Looking at the statistical difference, only the results from bag of words features for English and word ngrams for Spanish were different from each other. Looking at the columns, we can see that~\textit{tfidf} features gave an accuracy of 69.1\% for English. It is higher than the normalized term frequency and even the combination of the best features. For Spanish however, the combination of the best features gave the highest accuracy of 72.0\%. Dutch and Italian dont have results since the data set doesnt have any labels on this aspect. 
+The result for age classification is given in table~\ref{table:AgeResults}.~\textit{Tfidf} and word bigrams gave the better result among bag of words features and word ngrams respectively. For POS ngrams however, bigrams for English gave the best result while the combination of unigrams and bigrams gave a best result for Spanish. Looking at the statistical difference, only the results from bag of words features for English and word ngrams for Spanish were different from each other. Looking at the columns, we can see that~\textit{tfidf} features gave an accuracy of 69.1\% for English. It is higher than the normalized term frequency and even the combination of the best features as seen in table~\ref{table:AgeBestCombo}. For Spanish however, the combination of the best features gave the highest accuracy of 72.0\%. Dutch and Italian dont have results since the data set doesnt have any labels on this aspect. 
+
+
 \begin{table}[!htbp]
-  \centering
-  \begin{tabular}{|c|c|cccc|}
-    \hline
-    \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch                 & Italian               & Spanish        \\ \hline
-    \multirow{2}{*}{BoW}                                                   & tf       & 0.395          &                       &                       & 0.460          \\ %\cline{2-6} 
-    & tfidf    & \textbf{0.691} &                       &                       & \textbf{0.470}          \\ \hline
-    \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & \textbf{0.638}          &                       &                       & \textbf{0.640}          \\ %\cline{2-6} 
-    & trigrams & 0.553          &                       &                       & 0.460          \\ \hline
-    \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.579          &                       &                       & 0.550          \\ %\cline{2-6} 
-    & bigrams  & \textbf{0.611}          &                       &                       & 0.670          \\ %\cline{2-6} 
-    & uni+bi   & 0.593          &                       &                       & \textbf{0.700}          \\ \hline
-    \multicolumn{1}{|l|}{}                                                 & combo    & 0.650          & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \textbf{0.720} \\ \hline
-  \end{tabular}
-  \caption{Age classification results}
-  \label{table:AgeResults}
+\centering
+\begin{tabular}{|c|c|cccc|}
+\hline
+\multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch & Italian & Spanish        \\ \hline
+\multirow{2}{*}{BoW}                                                   & tf       & 0.395          &       &         & 0.460          \\ %\cline{2-6} 
+                                                                       & tfidf    & \textbf{0.691} &       &         & 0.470          \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.638          &       &         & \textbf{0.640} \\ %\cline{2-6} 
+                                                                       & trigrams & 0.553          &       &         & 0.460          \\ \hline
+\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.579          &       &         & 0.550          \\ %\cline{2-6} 
+                                                                       & bigrams  & 0.611          &       &         & 0.670          \\ %\cline{2-6} 
+                                                                       & uni+bi   & 0.593          &       &         & 0.700          \\ \hline
+\end{tabular}
+\caption{Age classification results}
+\label{table:AgeResults}
 \end{table}
+
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|c|cccc|}
+\hline
+Feature & English & Dutch & Italian & Spanish \\ \hline
+best    & 0.691   &       &         & 0.700   \\ %\hline
+combo   & 0.650   &       &         & 0.720   \\ \hline
+\end{tabular}
+\caption{Comparing results from the combination of features and best from previous experiments for age classification.}
+\label{table:AgeBestCombo}
+\end{table}
+
+
+
+% OLD TABLE
+%\begin{table}[!htbp]
+%  \centering
+%  \begin{tabular}{|c|c|cccc|}
+%    \hline
+%    \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch                 & Italian               & Spanish        \\ \hline
+%    \multirow{2}{*}{BoW}                                                   & tf       & 0.395          &                       &                       & 0.460          \\ %\cline{2-6} 
+%    & tfidf    & \textbf{0.691} &                       &                       & \textbf{0.470}          \\ \hline
+%    \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & \textbf{0.638}          &                       &                       & \textbf{0.640}          \\ %\cline{2-6} 
+%    & trigrams & 0.553          &                       &                       & 0.460          \\ \hline
+%    \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.579          &                       &                       & 0.550          \\ %\cline{2-6} 
+%    & bigrams  & \textbf{0.611}          &                       &                       & 0.670          \\ %\cline{2-6} 
+%    & uni+bi   & 0.593          &                       &                       & \textbf{0.700}          \\ \hline
+%    \multicolumn{1}{|l|}{}                                                 & combo    & 0.650          & \multicolumn{1}{l}{} & \multicolumn{1}{l}{} & \textbf{0.720} \\ \hline
+%  \end{tabular}
+%  \caption{Age classification results}
+%  \label{table:AgeResults}
+%\end{table}
 
 \subsection{Gender Classification}
-The result for gender classification is given in table~\ref{table:GenderResults}.~\textit{Tfidf} features gave the better results over normalized term frequency. Text trigrams worked better than text bigrams for English and Dutch. On the other hand, text bigrams work better for Italian and Spanish. Finally, the combination of POS unigrams and bigrams worked better for English, Italian, and Spanish, but POS unigrams worked better for Dutch. Looking at the statistical difference, only the results for word ngrams for Spanish, and bag of words for English and Spanish were different. Looking at the columns,~\textit{tfidf} gave the highest accuracy result for English tweets with 68.3\%. However for the other languages, the combination of the features gives the best result - 65.8\% for Dutch, 75.8\% for Italian, and 80.0\% for Spanish. Only Italian has a tie with another feature set - combination of POS unigrams and bigrams.   
+The result for gender classification is given in table~\ref{table:GenderResults}.~\textit{Tfidf} features gave the better results over normalized term frequency. Word trigrams worked better than word bigrams for English and Dutch. On the other hand, word bigrams work better for Italian and Spanish. Finally, the combination of POS unigrams and bigrams worked better for English, Italian, and Spanish, but POS unigrams worked better for Dutch. Looking at the statistical difference, only the results for word ngrams for Spanish, and bag of words for English and Spanish were different. Looking at the columns,~\textit{tfidf} gave the highest accuracy result for English tweets with 68.3\%. However for the other languages, the combination of the features gives the best result - 65.8\% for Dutch, 75.8\% for Italian, and 80.0\% for Spanish. Only Italian has a tie with another feature set - combination of POS unigrams and bigrams as seen in table~\ref{table:GenderBestCombo}.   
+
+
 \begin{table}[!htbp]
-  \centering
-  \begin{tabular}{|c|c|cccc|}
-    \hline
-    \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch & Italian & Spanish        \\ \hline
-    \multirow{2}{*}{BoW}                                                   & tf       & 0.511          & 0.450 & 0.617   & 0.550          \\ %\cline{2-6} 
-    & tfidf    & \textbf{0.683} & \textbf{0.517} & \textbf{0.750}   & \textbf{0.690}          \\ \hline
-    \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.623          & 0.550 & \textbf{0.733}   & \textbf{0.700}          \\ %\cline{2-6} 
-    & trigrams & \textbf{0.652}          & \textbf{0.650} & 0.700   & 0.520          \\ \hline
-    \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.659          & \textbf{0.642} & 0.733   & 0.770          \\ %\cline{2-6} 
-    & bigrams  & 0.659          & 0.567 & 0.733   & 0.750          \\ %\cline{2-6} 
-    & uni+bi   & \textbf{0.660}          & 0.592 & \textbf{0.758}   & \textbf{0.780}          \\ \hline
-    & combo    & 0.671          & \textbf{0.658} & \textbf{0.758}   & \textbf{0.800} \\ \hline
-  \end{tabular}
-  \caption{Gender classification results}
-  \label{table:GenderResults}
+\centering
+\begin{tabular}{|c|c|cccc|}
+\hline
+\multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch & Italian & Spanish        \\ \hline
+\multirow{2}{*}{BoW}                                                   & tf       & 0.511          & 0.450 & 0.617   & 0.550          \\ %\cline{2-6} 
+                                                                       & tfidf    & \textbf{0.683} & 0.517 & 0.750   & \textbf{0.690} \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.623          & 0.550 & 0.733   & \textbf{0.700} \\ %\cline{2-6} 
+                                                                       & trigrams & 0.652          & 0.650 & 0.700   & 0.520          \\ \hline
+\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.659          & 0.642 & 0.733   & 0.770          \\ %\cline{2-6} 
+                                                                       & bigrams  & 0.659          & 0.567 & 0.733   & 0.750          \\ %\cline{2-6} 
+                                                                       & uni+bi   & 0.660          & 0.592 & 0.758   & 0.780          \\ \hline
+\end{tabular}
+\caption{Gender classification results}
+\label{table:GenderResults}
 \end{table}
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{|c|cccc|}
+\hline
+Feature & English & Dutch & Italian & Spanish \\ \hline
+best    & 0.683   & 0.650 & 0.758   & 0.780   \\ %\hline
+combo   & 0.671   & 0.658 & 0.758   & 0.800   \\ \hline
+\end{tabular}
+\caption{Comparing results from the combination of features and best from previous experiments for gender classification.}
+\label{table:GenderBestCombo}
+\end{table}
+% OLD TABLE
+%\begin{table}[!htbp]
+%  \centering
+%  \begin{tabular}{|c|c|cccc|}
+%    \hline
+%    \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch & Italian & Spanish        \\ \hline
+%    \multirow{2}{*}{BoW}                                                   & tf       & 0.511          & 0.450 & 0.617   & 0.550          \\ %\cline{2-6} 
+%    & tfidf    & \textbf{0.683} & \textbf{0.517} & \textbf{0.750}   & \textbf{0.690}          \\ \hline
+%    \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.623          & 0.550 & \textbf{0.733}   & \textbf{0.700}          \\ %\cline{2-6} 
+%    & trigrams & \textbf{0.652}          & \textbf{0.650} & 0.700   & 0.520          \\ \hline
+%    \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.659          & \textbf{0.642} & 0.733   & 0.770          \\ %\cline{2-6} 
+%    & bigrams  & 0.659          & 0.567 & 0.733   & 0.750          \\ %\cline{2-6} 
+%    & uni+bi   & \textbf{0.660}          & 0.592 & \textbf{0.758}   & \textbf{0.780}          \\ \hline
+%    & combo    & 0.671          & \textbf{0.658} & \textbf{0.758}   & \textbf{0.800} \\ \hline
+%  \end{tabular}
+%  \caption{Gender classification results}
+%  \label{table:GenderResults}
+%\end{table}
 
 \subsection{Personality Regression}
-The results for personality regression are given in tables~\ref{table:ExtrovertedResults},~\ref{table:StableResults},~\ref{table:AgreeableResults},~\ref{table:OpenResults}, and~\ref{table:ConscientiousnessResults}. For the extroversion component of the personality as seen in table~\ref{table:ExtrovertedResults}, we see that~\textit{tfidf} works better than normalized term frequency for all languages. Text bigrams also work better than trigrams. POS bigrams work better for Dutch, Italian, and Spanish. POS unigrams worked better for English. However, looking into statistical difference among features within a class, only results from Spanish that uses POS unigrams were statistically different from POS bigrams or the combination. Looking at the columns, the combination of all the best features gave the best results for Dutch, Italian, and Spanish. However,~\textit{tfidf} gave the best results for English. 
-% Please add the following required packages to your document preamble:
-% \usepackage{multirow}
-\begin{table}[!htbp]
-  \centering
-  \begin{tabular}{|c|c|cccc|}
-    \hline
-    \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch          & Italian        & Spanish        \\ \hline
-    \multirow{2}{*}{BoW}                                                   & tf       & 0.027          & 0.024          & 0.030          & 0.029          \\ %\cline{2-6} 
-    & tfidf    & \textbf{0.023} & \textbf{0.016}          & \textbf{0.019}          & \textbf{0.025}          \\ \hline
-    \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & \textbf{0.025}          & \textbf{0.015}          & \textbf{0.021}          & \textbf{0.025}          \\ %\cline{2-6} 
-    & trigrams & 0.026          & 0.018          & 0.022          & 0.028          \\ \hline
-    \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & \textbf{0.040}          & 0.020          & 0.030          & 0.129          \\ %\cline{2-6} 
-    & bigrams  & 0.047          & \textbf{0.015}          & \textbf{0.015}          & \textbf{0.023}          \\ %\cline{2-6} 
-    & uni+bi   & 0.050          & 0.016          & 0.017          & 0.024          \\ \hline
-    & combo    & 0.029          & \textbf{0.014} & \textbf{0.015} & \textbf{0.022} \\ \hline
-  \end{tabular}
-  \caption{Extroversion regression results}
-  \label{table:ExtrovertedResults}
-\end{table}
-
-The results for the stability component of personality are given in table~\ref{table:StableResults}.~\textit{Tfidf} features worked better than normalized term frequency on all languages. Text bigrams also worked better. POS unigrams worked better for English, while the combination of POS unigrams worked better for both Dutch and Italian, while POS bigrams worked well for Spanish and Italian as well. Looking into statistical difference among features within a class, results from Italian and Spanish that uses POS unigrams were statistically different from POS bigrams or the combination. Results from bag of words features for Spanish were also statistically different from each other. Looking at each language, the best features vary.~\textit{Tfidf} features work well for English with a mean squared error of 0.039. The combination of POS unigrams and bigrams work well for Dutch and Italian. But for Italian, the POS bigrams also work just as well as the combination. Finally for Spanish, POS bigrams gave the best results. 
-
-
-
+The average mean squared error across all five personality traits is given by table~\ref{table:AvgPersonality}. Generally speaking, most of the results are not statistically different from each other. 
 
 \begin{table}[!htbp]
-  \centering
-  \begin{tabular}{|c|c|cccc|}
-    \hline
-    \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch          & Italian        & Spanish        \\ \hline
-    \multirow{2}{*}{BoW}                                                   & tf       & 0.048          & 0.048          & 0.031          & 0.046          \\ %\cline{2-6} 
-    & tfidf    & \textbf{0.039} & \textbf{0.028}          & \textbf{0.030}          & \textbf{0.034}          \\ \hline
-    \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & \textbf{0.045}          & \textbf{0.031}          & \textbf{0.031}          & \textbf{0.038}          \\ %\cline{2-6} 
-    & trigrams & 0.048          & 0.041          & 0.033          & 0.041          \\ \hline
-    \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & \textbf{0.055}          & 0.030          & 0.040          & 0.135          \\ %\cline{2-6} 
-    & bigrams  & 0.057          & 0.027          & \textbf{0.020} & \textbf{0.032} \\ %\cline{2-6} 
-    & uni+bi   & 0.059          & \textbf{0.023} & \textbf{0.020} & 0.033          \\ \hline
-    & combo    & 0.044          & 0.027          & 0.023          & 0.034          \\ \hline
-  \end{tabular}
-  \caption{Stability regression results}
-  \label{table:StableResults}
+\centering
+\begin{tabular}{|c|c|cccc|}
+\hline
+\multicolumn{2}{|c|}{Feature}                                                     & English & Dutch & Italian & Spanish \\ \hline
+\multirow{2}{*}{BoW}                                                   & tf       & 0.029   & 0.026 & 0.025   & 0.033   \\ %\cline{2-6} 
+                                                                       & tfidf    & 0.025   & 0.018 & 0.021   & 0.027   \\ \hline
+\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.027   & 0.020 & 0.023   & 0.029   \\ %\cline{2-6} 
+                                                                       & trigrams & 0.028   & 0.023 & 0.024   & 0.032   \\ \hline
+\multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.035   & 0.034 & 0.031   & 0.126   \\ %\cline{2-6} 
+                                                                       & bigrams  & 0.038   & 0.022 & 0.017   & 0.027   \\ %\cline{2-6} 
+                                                                       & uni+bi   & 0.040   & 0.022 & 0.018   & 0.029   \\ \hline
+\end{tabular}
+\caption{Average of all the personality dimensions}
+\label{table:AvgPersonality}
 \end{table}
-
-The results for the agreeability component of personality are given in table~\ref{table:AgreeableResults}.~\textit{Tfidf} features work better than normalized term frequency. Text trigrams work better for English and Dutch, while bigrams work better for Spanish. Text bigrams and trigrams are tied for Italian. Looking into statistical difference among features within a class, only results from Spanish that uses POS unigrams were statistically different from POS bigrams or the combination. Looking at the columns,~\textit{tfidf} seems to work for English, Dutch, and Spanish, except that Spanish~\textit{tfidf} results tie with results from the combination of the best features. The combination of the best features also works well for Italian. 
 
 \begin{table}[!htbp]
-  \centering
-  \begin{tabular}{|c|c|cccc|}
-    \hline
-    \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch          & Italian        & Spanish        \\ \hline
-    \multirow{2}{*}{BoW}                                                   & tf       & 0.025          & 0.025          & 0.026          & 0.028          \\ %\cline{2-6} 
-    & tfidf    & \textbf{0.023} & \textbf{0.024} & \textbf{0.022}          & \textbf{0.024} \\ \hline
-    \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & 0.027          & 0.030          & \textbf{0.026}          & \textbf{0.027}          \\ %\cline{2-6} 
-    & trigrams & \textbf{0.026}          & \textbf{0.026}          & \textbf{0.026}          & 0.028          \\ \hline
-    \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & \textbf{0.031}          & 0.041          & 0.039          & 0.222          \\ %\cline{2-6} 
-    & bigrams  & 0.037          & \textbf{0.034}          & \textbf{0.020}          & \textbf{0.027}          \\ %\cline{2-6} 
-    & uni+bi   & 0.038          & 0.036          & 0.024          & 0.029          \\ \hline
-    & combo    & 0.028          & 0.031          & \textbf{0.019} & \textbf{0.024} \\ \hline
-  \end{tabular}
-  \caption{Agreeability regression results}
-  \label{table:AgreeableResults}
+\centering
+\begin{tabular}{|c|cccc|}
+\hline
+Feature & English & Dutch & Italian & Spanish \\ \hline
+best    & 0.025   & 0.018 & 0.017   & 0.027   \\ %\hline
+combo   & 0.029   & 0.019 & 0.017   & 0.026   \\ \hline
+\end{tabular}
+\caption{Comparing results from the combination of features and best from previous experiments for personality regression.}
+\label{table:PersonalityBestCombo}
 \end{table}
 
+%\subsection{Old Personality Regression Text}
+For the extroversion component, results within bag-of-words features are not statistically different from each other, on all languages. The same could be said for word ngrams on all languages. The only results that differ statistically is that from Spanish that uses POS unigrams. It varies differently from that of both POS bigrams and the combination of POS unigrams and bigrams, with either of the two being the better result. Comparing the best results from the result with combined features, we also see that we dont gain anything. 
 
-The results for the openness component of personality are given in table~\ref{table:OpenResults}.~\textit{Tfidf} features work better than normalized term frequency. Text bigrams work better than text trigrams. POS unigrams work better than the rest for English. The combination of POS unigrams and bigrams work better for both Dutch and Italian. But for Italian, POS bigrams also work well, the same as Spanish. Looking into statistical difference among features within a class, bag of words features for Spanish were statistically different. Also, results from Spanish that uses POS unigrams were statistically different from POS bigrams or the combination. Looking at the columns,~\textit{Tfidf} features gave the best results for English. The combination of POS unigrams and bigrams also tied with~\textit{tfidf} gave the best results for Dutch. For Italian however, three different feature sets gave the same results - POS bigrams, the combination of POS unigrams and bigrams, and finally, the combination of the best features. Finally for Spanish, POS bigrams gave the best results. 
+For the stability component, results within bag-of-words features are not statistically different from each other on English, Dutch, and Italian.~\textit{Tfidf} performed better than normalized term frequency in Spanish. Results within word ngrams are not statistically different from each other. For POS ngrams, results were not statistically different for English and Dutch. For Italian and Spanish however, POS bigrams and the combination of POS unigrams and bigrams gave better results and are statistically different from the results from POS unigrams alone. Finally, looking at the results for the combination of features, we dont really gain much. 
+
+For agreeability component, results within bag-of-words and word ngrams features are not statistically different from each other on all languages. For POS ngrams, only Spanish POS bigrams and the combination of POS unigrams and bigrams gave the better result and are statistically different from POS unigrams. Looking at the results for the combination of features, we can also see that we dont gain that much from the combination. 
+
+For the openness component, results with word ngrams features are not statistically different from each other on all languages. This is also the same for bag-of-words features except that for Spanish where~\textit{tfidf} outperforms normalized term frequency and it is statistically different. This is also the same for POS ngrams. All results are not statistically different from each other except for Spanish where POS bigrams and the combination of POS bigrams and unigrams give a better result than that of POS unigrams. Looking at the results for the combination of features, we can again see that the combination does not give better results. 
+
+Finally, for conscientiousness, results for bag-of-words features and word ngrams are not statistically different from each other. For POS ngrams we observe the same pattern where there is no statistical difference between each features for all languages except Spanish. And POS bigrams and the combination of POS unigrams and bigrams give a better result than POS unigrams. Also, the combination of features does not improve the regression result. 
 
 
-\begin{table}[!htbp]
-  \centering
-  \begin{tabular}{|c|c|cccc|}
-    \hline
-    \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch          & Italian        & Spanish        \\ \hline
-    \multirow{2}{*}{BoW}                                                   & tf       & 0.023          & 0.019          & 0.015          & 0.036          \\ %\cline{2-6} 
-    & tfidf    & \textbf{0.020} & \textbf{0.012} & \textbf{0.014} & \textbf{0.026} \\ \hline
-    \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & \textbf{0.021} & \textbf{0.014} & \textbf{0.015} & \textbf{0.030} \\ %\cline{2-6} 
-    & trigrams & 0.022          & 0.015          & 0.016          & 0.034          \\ \hline
-    \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & \textbf{0.029} & 0.016          & 0.019          & 0.061          \\ %\cline{2-6} 
-    & bigrams  & 0.035          & 0.013          & \textbf{0.013} & \textbf{0.023} \\ %\cline{2-6} 
-    & uni+bi   & 0.038          & \textbf{0.012} & \textbf{0.013} & 0.024          \\ \hline
-    & combo    & 0.024          & 0.013          & \textbf{0.013} & 0.024          \\ \hline
-  \end{tabular}
-  \caption{Openness regression results}
-  \label{table:OpenResults}
-\end{table}
-
-The results for the conscientiousness component of personality are given in table~\ref{table:ConscientiousnessResults}.~\textit{Tfidf} features work better than normalized term frequency, while text bigrams work better than text trigrams. POS bigrams work better than the rest for all languages but the combination of unigrams and bigrams went for a tie in English. Looking into statistical difference among features within a class, results from Spanish that uses POS unigrams were statistically different from POS bigrams. Looking at the columns, POS bigrams and the combination of POS unigrams and bigrams gave the best results for English. The combination of the best features gave the best results for Dutch. POS bigrams gave the results for Italian while~\textit{tfidf} gave the best results for Spanish. 
-
-\begin{table}[!htbp]
-  \centering
-  \begin{tabular}{|c|c|cccc|}
-    \hline
-    \multicolumn{2}{|c|}{Feature}                                                     & English        & Dutch          & Italian        & Spanish        \\ \hline
-    \multirow{2}{*}{BoW}                                                   & tf       & 0.023          & 0.015          & 0.024          & 0.028          \\ %\cline{2-6} 
-    & tfidf    & \textbf{0.018}          & \textbf{0.012} & \textbf{0.022}          & \textbf{0.024} \\ \hline
-    \multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Text\\ Ngrams\end{tabular}} & bigrams  & \textbf{0.019}          & \textbf{0.012}          & \textbf{0.022}          & \textbf{0.026}          \\ %\cline{2-6} 
-    & trigrams & 0.020          & 0.015          & 0.023          & 0.028          \\ \hline
-    \multirow{3}{*}{\begin{tabular}[c]{@{}c@{}}POS\\ Ngrams\end{tabular}}  & unigrams & 0.019          & 0.061          & 0.027          & 0.083          \\ %\cline{2-6} 
-    & bigrams  & \textbf{0.013} & \textbf{0.023}          & \textbf{0.015} & \textbf{0.028}          \\ %\cline{2-6} 
-    & uni+bi   & \textbf{0.013} & 0.024          & 0.017          & 0.033          \\ \hline
-    & combo    & 0.019          & \textbf{0.010} & 0.016          & 0.025          \\ \hline
-  \end{tabular}
-  \caption{Conscientiousness regression results}
-  \label{table:ConscientiousnessResults}
-\end{table}
 
 \section{Conclusions and Future Work}
-From the current work, we can observe that different features work better for different languages. Comparing among features,~\textit{tfidf} generally works better than normalized term frequency. Text bigrams also work better for most tasks than text trigrams, while it is quite varied for POS ngrams where the best feature is dependent on the task. Looking at what works for each language,~\textit{tfidf} features worked best for all profiling tasks in English except conscientiousness regression. The combination of the best features gives better results for gender classification and extroversion regression for Dutch. However, other features work better for the other tasks - POS unigrams and bigrams for regression on stability,~\textit{tfidf} on agreeability and openness, POS unigrams and bigrams also for openness, and the combination of the best features for conscientiousness. Two types of features gave the best results for the different tasks for Italian - the combination of all the best features and the combination of POS unigrams and bigrams. Finally for Spanish, the combination of all the best features works for most of the tasks - age and gender classification and extroversion and agreeability regression. POS bigrams worked best for stability and openness regression, while~\textit{tfidf} worked best for conscientious regression.
+Comparing among features,~\textit{tfidf} generally works better than normalized term frequency. Word bigrams also work better for most tasks than word trigrams, while it is quite varied for POS ngrams where the best feature is dependent on the task. 
+
+~\textit{Tfidf} works best for English age and gender classification, and also for Spanish gender classification. The same could be said for word bigrams on Spanish gender classification. For personality regression, 
+
+Looking at what works for each language,~\textit{tfidf} features worked best for all profiling tasks in English except conscientiousness regression. The combination of the best features gives better results for gender classification and extroversion regression for Dutch. However, other features work better for the other tasks - POS unigrams and bigrams for regression on stability,~\textit{tfidf} on agreeability and openness, POS unigrams and bigrams also for openness, and the combination of the best features for conscientiousness. Two types of features gave the best results for the different tasks for Italian - the combination of all the best features and the combination of POS unigrams and bigrams. Finally for Spanish, the combination of all the best features works for most of the tasks - age and gender classification and extroversion and agreeability regression. POS bigrams worked best for stability and openness regression, while~\textit{tfidf} worked best for conscientious regression.
 
 These results are by no means exhaustive. There are still many methods that could be explored. For instance, the preprocessing is quite minimal. More features could be extracted from the text such as number of links, retweets, hashtags, and mentions, length of tweets, ratios of uppercase to lower case characters, non-dictionary words, lexical diversity, emoticons, sentiment words, informative words and character ngrams. Furthermore, since Support Vector Machines with linear kernel was used, it would also be worth exploring other kernels as well as doing parameter tuning. Finally, a multi-dimensional classification approach can also be explored. Instead of having two distinct classes for age and gender classification for instance, the target classes could be the combination of the two classes. Instead of having 5 different regressions on personality traits, it would be possible to take all 5 traits all at once. This is worth exploring since the traits can be codependent. 
 
